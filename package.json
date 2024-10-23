@@ -1,0 +1,51 @@
+{
+  "name": "soia_backend",
+  "author": "Bree Massingill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "lint": "npx eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bree-Mass/soia_backend.git"
+  },
+  "homepage": "https://github.com/Bree-Mass/soia_backend#readme",
+  "bugs": {
+    "url": "https://github.com/Bree-Mass/soia_backend/issues"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "^7.13.0",
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "celebrate": "^15.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-rate-limit": "^7.4.1",
+    "express-winston": "^4.2.0",
+    "gaxios": "^6.7.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.11.0",
+    "mongoose": "^8.8.3",
+    "node-fetch": "^3.3.2",
+    "validator": "^13.12.0",
+    "whatwg-url": "^14.0.0",
+    "winston": "^3.15.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-import": "^2.29.1",
+    "nodemon": "^3.1.4",
+    "prettier": "^2.8.8"
+  }
+}
