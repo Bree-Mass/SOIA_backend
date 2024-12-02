@@ -1,4 +1,3 @@
-const axios = require("axios");
 const { Storage } = require("@google-cloud/storage");
 
 module.exports.getPages = (req, res) => {
@@ -6,24 +5,19 @@ module.exports.getPages = (req, res) => {
     projectId: "SOIA Project",
     keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
   });
-  console.log("Recieved request for Google Pages");
 
   return storage
     .bucket("soia_bucket")
     .getFiles({ prefix: "books/book-1/SoiA", autoPaginate: false })
-    .then(([files]) => {
-      if (files.length === 0) {
-        console.log("No files found.");
-        return res.status(404).json({ message: "No files found." });
-      }
-      const fileUrls = files.map((file) => {
-        return `https://storage.googleapis.com/soia_bucket/${file.name}`;
-      });
-
-      return res.status(200).json({ urls: fileUrls });
-    })
-    .catch((error) => {
-      console.error("Error retrieving files:", error);
-      return res.status(500).json({ message: "Internal server error." });
-    });
+    .then(([files]) =>
+      files.length === 0
+        ? res.status(404).json({ message: "No files found." })
+        : res.status(200).json({
+            urls: files.map(
+              (file) =>
+                `https://storage.googleapis.com/soia_bucket/${file.name}`
+            ),
+          })
+    )
+    .catch(() => res.status(500).json({ message: "Internal server error" }));
 };

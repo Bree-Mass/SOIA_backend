@@ -12,7 +12,7 @@ const {
 
 module.exports.createUser = (req, res, next) => {
   const { name, email, password } = req.body;
-  console.log("Received request to create user");
+
   bcrypt
     .hash(password, 10)
     .then((hash) => User.create({ name, email, password: hash, page: 0 }))
@@ -34,7 +34,7 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-  console.log("Received request to login");
+
   if (!email || !password) {
     next(new BadRequestError("Invalid email or password"));
   }
@@ -55,7 +55,6 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.getCurrentUser = (req, res, next) => {
-  console.log("Received request to get user");
   User.findById(req.user._id)
     .orFail()
     .then((user) => res.send({ data: user }))
@@ -72,7 +71,6 @@ module.exports.getCurrentUser = (req, res, next) => {
 
 module.exports.patchCurrentUser = (req, res, next) => {
   const { name, email, page } = req.body;
-  console.log("Received request to patch user");
   User.findByIdAndUpdate(
     req.user._id,
     { name, email, page },

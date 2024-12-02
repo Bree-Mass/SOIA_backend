@@ -4,7 +4,6 @@ const { UnauthorizedError } = require("../utils/errors");
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
-  console.log("Authorizing...");
   if (!authorization || !authorization.startsWith("Bearer ")) {
     return next(
       new UnauthorizedError("You do not have permission for this action")
