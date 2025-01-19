@@ -10,7 +10,13 @@ const routes = require("./routes");
 
 app.use(express.json());
 app.use(helmet());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://soia.home.kg",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(routes);
 
 mongoose
