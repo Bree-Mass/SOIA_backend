@@ -6,8 +6,8 @@ const commentRoutes = require("./comments");
 
 const { NotFoundError } = require("../utils/errors");
 
-router.use("/", patreonApiRoutes);
-router.use("/", googleApiRoutes);
+router.use("/patreon", patreonApiRoutes);
+router.use("/google", googleApiRoutes);
 router.use("/", userRoutes);
 router.use("/", commentRoutes);
 router.use((req, res, next) => {
